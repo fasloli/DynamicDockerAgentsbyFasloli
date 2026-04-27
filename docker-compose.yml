@@ -1,0 +1,17 @@
+services:
+  main:
+    container_name: main
+    hostname: jenkins-main
+    build:
+      context: .
+      dockerfile: Dockerfile.main
+    ports:
+      - "80:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./jenkins_home:/var/jenkins_home
+    networks:
+      - jenkins
+
+networks:
+  jenkins:
